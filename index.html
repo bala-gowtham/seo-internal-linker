@@ -2,46 +2,90 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SEO Internal Linker</title>
-  <link rel="stylesheet" href="style.css" />
+  <!-- Tailwind CDN for quick prototyping -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <!-- Input Section -->
-  <section class="section input-section">
-    <div class="left">
-      <img src="https://raw.githubusercontent.com/bala-gowtham/seo-internal-linker/main/repute-logo-white-01.png" alt="Repute Logo" class="logo" />
-      <h1>SEO Internal Linker</h1>
-      <p>Quickly generate SEO‑optimized internal link HTML and preview it live.</p>
-      <button id="try-again-input" class="btn-outline">Try Again</button>
-    </div>
-    <div class="right">
-      <form id="seo-form">
-        <label>Client Domain<input type="url" name="client_domain" required /></label>
-        <label>Industry<input type="text" name="industry" required /></label>
-        <label>Primary Keyword<input type="text" name="primary_kw" required /></label>
-        <label>Secondary Keywords<input type="text" name="secondary_kws" placeholder="comma, separated" required /></label>
-        <label>Article<textarea name="article" rows="6" required></textarea></label>
-        <button type="submit" class="btn">Generate SEO Links</button>
-      </form>
-    </div>
-  </section>
+<body class="min-h-screen flex">
+  <!-- Left Panel -->
+  <div class="w-1/2 bg-yellow-400 flex flex-col justify-center items-center p-12">
+    <img src="https://via.placeholder.com/120" alt="SEO Icon" class="mb-8 rounded-full shadow-lg" />
+    <h1 class="text-4xl font-bold mb-4 text-white">Let’s Get Started</h1>
+    <p class="text-lg text-white text-center max-w-sm">
+      Fill out the details on the right and get your SEO-optimized internal links in seconds.
+    </p>
+  </div>
 
-  <!-- Output Section -->
-  <section class="section output-section hidden" id="output">
-    <div class="split">
-      <div class="box">
-        <h2>Generated HTML</h2>
-        <pre id="generated"></pre>
+  <!-- Right Panel -->
+  <div class="w-1/2 bg-white flex flex-col justify-center p-12">
+    <form 
+      name="seo-linker" 
+      method="POST" 
+      data-netlify="true" 
+      action="/thanks.html" 
+      class="space-y-6"
+    >
+      <input type="hidden" name="form-name" value="seo-linker" />
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Client Domain</label>
+        <input 
+          type="url" 
+          name="client_domain" 
+          required 
+          class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        />
       </div>
-      <div class="box">
-        <h2>Rendered Preview</h2>
-        <iframe id="preview" sandbox=""></iframe>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Industry</label>
+        <input 
+          type="text" 
+          name="industry" 
+          required 
+          class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        />
       </div>
-    </div>
-    <button id="try-again" class="btn">Try Again</button>
-  </section>
-
-  <script src="script.js"></script>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Primary Keyword</label>
+        <input 
+          type="text" 
+          name="primary_kw" 
+          required 
+          class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        />
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Secondary Keywords</label>
+        <input 
+          type="text" 
+          name="secondary_kws" 
+          required 
+          placeholder="comma, separated, list"
+          class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        />
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Article (HTML or plain text)</label>
+        <textarea 
+          name="article" 
+          rows="8" 
+          required 
+          class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        ></textarea>
+      </div>
+      
+      <button 
+        type="submit" 
+        class="w-full bg-yellow-400 text-white font-semibold py-3 rounded hover:bg-yellow-500 transition"
+      >
+        Generate SEO Links
+      </button>
+    </form>
+  </div>
 </body>
 </html>
