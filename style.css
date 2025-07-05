@@ -47,3 +47,44 @@ body { font-family: var(--font); color: var(--dark); }
   .section { flex-direction: column; }
   .split { flex-direction: column; }
 }
+/* At the bottom of style.css */
+
+/* Scope all inputs/textareas under your input section */
+#input-section .right-panel input,
+#input-section .right-panel textarea {
+  padding: .75rem !important;
+  border: none !important;
+  border-radius: 4px !important;
+  width: 100% !important;
+  font-size: 1rem !important;
+}
+
+/* Style your buttons even if theme overrides */
+#input-section .btn-generate,
+#input-section .btn-retry,
+#output-section .btn-retry {
+  all: unset;                /* drop theme’s button styles */
+  display: inline-block;
+  padding: .75rem 1.5rem;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#input-section .btn-generate {
+  background: #fff;
+  color: #B90000;
+}
+
+#input-section .btn-retry {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+#output-section .btn-retry {
+  background: transparent;
+  border: 2px solid #B90000;
+  color: #B90000;
+}
