@@ -7,40 +7,40 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="header">
-    <img src="https://raw.githubusercontent.com/bala-gowtham/seo-internal-linker/main/repute-logo-white-01.png" alt="Repute Logo" class="logo" />
-  </header>
-
-  <main class="container">
-    <!-- Form Panel -->
-    <section class="panel form-panel">
+  <!-- Input Section -->
+  <section class="section input-section">
+    <div class="left">
+      <img src="https://raw.githubusercontent.com/bala-gowtham/seo-internal-linker/main/repute-logo-white-01.png" alt="Repute Logo" class="logo" />
+      <h1>SEO Internal Linker</h1>
+      <p>Quickly generate SEO‑optimized internal link HTML and preview it live.</p>
+      <button id="try-again-input" class="btn-outline">Try Again</button>
+    </div>
+    <div class="right">
       <form id="seo-form">
         <label>Client Domain<input type="url" name="client_domain" required /></label>
         <label>Industry<input type="text" name="industry" required /></label>
         <label>Primary Keyword<input type="text" name="primary_kw" required /></label>
-        <label>Secondary Keywords<input type="text" name="secondary_kws" placeholder="comma,separated" required /></label>
-        <label>Article<textarea name="article" rows="5" required></textarea></label>
+        <label>Secondary Keywords<input type="text" name="secondary_kws" placeholder="comma, separated" required /></label>
+        <label>Article<textarea name="article" rows="6" required></textarea></label>
         <button type="submit" class="btn">Generate SEO Links</button>
       </form>
-    </section>
+    </div>
+  </section>
 
-    <!-- Output Section -->
-    <section id="output" class="panel output-panel hidden">
-      <div class="split">
-        <!-- Generated HTML Box -->
-        <div class="output-box">
-          <h2>Generated HTML</h2>
-          <pre id="generated"></pre>
-        </div>
-        <!-- Executed Code Box -->
-        <div class="output-box rendered">
-          <h2>Rendered Preview</h2>
-          <iframe id="preview" sandbox=""></iframe>
-        </div>
+  <!-- Output Section -->
+  <section class="section output-section hidden" id="output">
+    <div class="split">
+      <div class="box">
+        <h2>Generated HTML</h2>
+        <pre id="generated"></pre>
       </div>
-      <button id="try-again" class="btn try">Try Again</button>
-    </section>
-  </main>
+      <div class="box">
+        <h2>Rendered Preview</h2>
+        <iframe id="preview" sandbox=""></iframe>
+      </div>
+    </div>
+    <button id="try-again" class="btn">Try Again</button>
+  </section>
 
   <script src="script.js"></script>
 </body>
