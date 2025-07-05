@@ -6,11 +6,21 @@
   <title>SEO Internal Linker</title>
   <!-- Tailwind CDN for quick prototyping -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Extend Tailwind with your custom red */
+    :root {
+      --brand-red: #B90000;
+    }
+  </style>
 </head>
 <body class="min-h-screen flex">
   <!-- Left Panel -->
-  <div class="w-1/2 bg-yellow-400 flex flex-col justify-center items-center p-12">
-    <img src="https://via.placeholder.com/120" alt="SEO Icon" class="mb-8 rounded-full shadow-lg" />
+  <div class="w-1/2 bg-[var(--brand-red)] flex flex-col justify-center items-center p-12">
+    <img 
+      src="https://irepute.in/blog/wp-content/uploads/2023/01/cropped-logo.png" 
+      alt="Repute Digital Logo" 
+      class="mb-8 h-24 w-auto"
+    />
     <h1 class="text-4xl font-bold mb-4 text-white">Let’s Get Started</h1>
     <p class="text-lg text-white text-center max-w-sm">
       Fill out the details on the right and get your SEO-optimized internal links in seconds.
@@ -34,7 +44,7 @@
           type="url" 
           name="client_domain" 
           required 
-          class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand-red)]"
         />
       </div>
       
@@ -44,7 +54,7 @@
           type="text" 
           name="industry" 
           required 
-          class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand-red)]"
         />
       </div>
       
@@ -54,7 +64,7 @@
           type="text" 
           name="primary_kw" 
           required 
-          class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand-red)]"
         />
       </div>
       
@@ -65,7 +75,7 @@
           name="secondary_kws" 
           required 
           placeholder="comma, separated, list"
-          class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand-red)]"
         />
       </div>
       
@@ -75,13 +85,13 @@
           name="article" 
           rows="8" 
           required 
-          class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-[var(--brand-red)]"
         ></textarea>
       </div>
       
       <button 
         type="submit" 
-        class="w-full bg-yellow-400 text-white font-semibold py-3 rounded hover:bg-yellow-500 transition"
+        class="w-full bg-[var(--brand-red)] text-white font-semibold py-3 rounded hover:bg-red-700 transition"
       >
         Generate SEO Links
       </button>
