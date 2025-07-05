@@ -1,36 +1,28 @@
-const form = document.getElementById('seo-form');
-const resultPanel = document.getElementById('result-panel');
-const resultContent = document.getElementById('result-content');
-const tryAgainBtn = document.getElementById('try-again');
+const form=document.getElementById('seo-form');
+const output=document.getElementById('output');
+const genBox=document.getElementById('generated');
+const preview=document.getElementById('preview');
+const tryBtn=document.getElementById('try-again');
 
-// Hide the result panel initially
-resultPanel.style.display = 'none';
+output.classList.add('hidden');
 
-form.addEventListener('submit', async (e) => {
+form.addEventListener('submit',async e=>{
   e.preventDefault();
-  const data = new FormData(form);
-  const payload = {};
-  data.forEach((v, k) => payload[k] = v);
+  const data=Object.fromEntries(new FormData(form));
+  genBox.textContent='Generating...';
+  preview.srcdoc='';
+  output.classList.remove('hidden');
+  form.closest('.form-panel').style.maxHeight='0';
 
-  // Show loading
-  resultContent.textContent = 'Generating...';
-  resultPanel.style.display = 'block';
-  form.parentElement.style.display = 'none';
-
-  try {
-    const response = await fetch('YOUR_N8N_WEBHOOK_URL', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    const html = await response.text();
-    resultContent.innerHTML = html;
-  } catch (err) {
-    resultContent.textContent = 'Error: ' + err.message;
-  }
+  try{
+    const res=await fetch('YOUR_N8N_WEBHOOK_URL',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    const html=await res.text();
+    genBox.textContent=html;
+    preview.srcdoc=html;
+  }catch(err){genBox.textContent='Error: '+err;}
 });
 
-tryAgainBtn.addEventListener('click', () => {
-  resultPanel.style.display = 'none';
-  form.parentElement.style.display = 'flex';
+tryBtn.addEventListener('click',()=>{
+  output.classList.add('hidden');
+  document.querySelector('.form-panel').style.maxHeight='none';
 });
