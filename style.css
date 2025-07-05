@@ -1,90 +1,75 @@
 :root {
-  --red: #B90000;
-  --white: #fff;
-  --light: #f9f9f9;
-  --dark: #333;
-  --font: 'Segoe UI', sans-serif;
+  --red   : #B90000;
+  --white : #ffffff;
+  --light : #f7f7f7;
+  --dark  : #333333;
+
+  --font-body : "Inter", sans-serif;
+  --font-head : "Poppins", sans-serif;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font); color: var(--dark); }
+body { font-family: var(--font-body); color: var(--dark); }
 .container { display: flex; flex-direction: column; }
-.section { display: flex; flex-wrap: wrap; padding: 2rem; min-height: 60vh; }
+.section { width: 100%; min-height: 100vh; }
 .hidden { display: none !important; }
 
-/* Input Section */
-.input-section { background: var(--red); color: var(--white); }
-.left-panel, .right-panel { flex: 1; padding: 1rem; }
-.left-panel { text-align: center; }
-.logo { max-width: 120px; margin-bottom: 1rem; }
-.left-panel h1 { font-size: 2rem; margin-bottom: .5rem; }
-.left-panel p { font-size: 1.1rem; line-height: 1.4; }
-
-.right-panel form { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; margin: auto; }
-.right-panel label { display: flex; flex-direction: column; font-size: .9rem; color: #fff; }
-.right-panel input,
-.right-panel textarea { padding: .5rem; border: none; border-radius: 4px; }
-.right-panel input { height: 2.5rem; }
-.right-panel textarea { resize: vertical; }
-.button-row { display: flex; gap: 1rem; margin-top: 1rem; }
-.btn { padding: .75rem 1.5rem; border-radius: 4px; font-weight: bold; cursor: pointer; }
-.btn-generate { background: var(--white); color: var(--red); border: none; flex: 1; }
-.btn-retry { background: transparent; color: var(--white); border: 2px solid var(--white); flex: 1; }
-.btn-generate:hover { opacity: .9; }
-.btn-retry:hover { background: rgba(255,255,255,0.1); }
-
-/* Output Section */
-.output-section { background: var(--light); flex-direction: column; }
-.split { display: flex; gap: 1rem; flex-wrap: wrap; }
-.box { background: var(--white); padding: 1rem; border: 1px solid #ddd; border-radius: 4px; flex: 1; min-width: 250px; max-height: 400px; overflow: auto; }
-.raw-box h2, .preview-box h2 { color: var(--red); margin-bottom: .5rem; font-size: 1.2rem; }
-.raw-box pre { white-space: pre-wrap; word-wrap: break-word; }
-.preview-box iframe { width: 100%; height: 100%; border: none; }
-.output-buttons { display: flex; justify-content: flex-end; padding: 1rem; }
-.output-buttons .btn-retry { color: var(--red); background: transparent; border: 2px solid var(--red); }
-
-/* Responsive */
-@media (max-width: 768px) {
-  .section { flex-direction: column; }
-  .split { flex-direction: column; }
-}
-/* At the bottom of style.css */
-
-/* Scope all inputs/textareas under your input section */
-#input-section .right-panel input,
-#input-section .right-panel textarea {
-  padding: .75rem !important;
-  border: none !important;
-  border-radius: 4px !important;
-  width: 100% !important;
-  font-size: 1rem !important;
-}
-
-/* Style your buttons even if theme overrides */
-#input-section .btn-generate,
-#input-section .btn-retry,
-#output-section .btn-retry {
-  all: unset;                /* drop theme’s button styles */
-  display: inline-block;
-  padding: .75rem 1.5rem;
-  border-radius: 4px;
+/* ========== INPUT SECTION ========== */
+.input-section { display: flex; flex-wrap: nowrap; }
+.left-panel {
+  flex: 0 0 45%;
+  background: var(--red);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+  gap: 1.5rem;
   text-align: center;
+}
+.logo { max-width: 150px; }
+.left-panel h1 { font-family: var(--font-head); font-size: 2.4rem; font-weight: 600; }
+.left-panel p  { font-size: 1.1rem; line-height: 1.4; max-width: 340px; }
+
+.right-panel { flex: 1; background: var(--white); display: flex; justify-content: center; padding: 3rem 2rem; }
+#seo-form { width: 100%; max-width: 520px; display: flex; flex-direction: column; gap: 1.25rem; }
+#seo-form label { display: flex; flex-direction: column; font-size: .9rem; gap: .4rem; font-weight: 600; }
+#seo-form input,
+#seo-form textarea { font-family: var(--font-body); padding: .75rem 1rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px; }
+#seo-form textarea { resize: vertical; min-height: 180px; }
+
+.button-row { display: flex; gap: 1rem; justify-content: space-between; margin-top: .5rem; }
+.btn {
+  flex: 1;
+  padding: .85rem 1.5rem;
+  border-radius: 4px;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  font-weight: bold;
+  transition: opacity .2s ease;
+  text-align: center;
 }
+.btn-generate { background: var(--red); color: var(--white); border: none; }
+.btn-retry    { background: transparent; border: 2px solid var(--red); color: var(--red); }
+.btn:hover    { opacity: .9; }
 
-#input-section .btn-generate {
-  background: #fff;
-  color: #B90000;
+/* ========== OUTPUT SECTION ========== */
+.output-section { background: var(--light); padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+.split { display: flex; gap: 1rem; flex-wrap: wrap; }
+.box { flex: 1; min-width: 300px; background: var(--white); border: 1px solid #ddd; border-radius: 4px; padding: 1rem; max-height: 420px; overflow: auto; display: flex; flex-direction: column; }
+.box h2 { font-family: var(--font-head); color: var(--red); margin-bottom: .5rem; font-size: 1.2rem; font-weight: 600; }
+.raw-box pre { white-space: pre-wrap; word-wrap: break-word; font-family: "Courier New", monospace; font-size: .9rem; }
+.preview-box iframe { width: 100%; height: 100%; border: none; }
+.output-buttons { align-self: flex-end; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .input-section { flex-direction: column; }
+  .left-panel { flex: 0 0 auto; width: 100%; padding: 2rem 1rem; }
+  .right-panel { width: 100%; padding: 2rem 1rem; }
 }
-
-#input-section .btn-retry {
-  background: transparent;
-  border: 2px solid #fff;
-  color: #fff;
-}
-
-#output-section .btn-retry {
-  background: transparent;
-  border: 2px solid #B90000;
-  color: #B90000;
+@media (max-width: 500px) {
+  .left-panel h1 { font-size: 1.8rem; }
+  .button-row { flex-direction: column; }
 }
