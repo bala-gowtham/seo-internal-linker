@@ -1,28 +1,38 @@
 const form=document.getElementById('seo-form');
-const output=document.getElementById('output');
-const genBox=document.getElementById('generated');
+const inputSection=document.querySelector('.input-section');
+const outputSection=document.getElementById('output');
+const genPre=document.getElementById('generated');
 const preview=document.getElementById('preview');
-const tryBtn=document.getElementById('try-again');
+const tryInput=document.getElementById('try-again-input');
+const tryAgain=document.getElementById('try-again');
 
-output.classList.add('hidden');
+// Show input, hide output initially
+inputSection.classList.remove('hidden');
+outputSection.classList.add('hidden');
 
+// Form submit → fetch & display
 form.addEventListener('submit',async e=>{
   e.preventDefault();
   const data=Object.fromEntries(new FormData(form));
-  genBox.textContent='Generating...';
+  genPre.textContent='Generating...';
   preview.srcdoc='';
-  output.classList.remove('hidden');
-  form.closest('.form-panel').style.maxHeight='0';
-
-  try{
+  outputSection.classList.remove('hidden');
+  inputSection.classList.add('hidden');
+  try {
     const res=await fetch('YOUR_N8N_WEBHOOK_URL',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
     const html=await res.text();
-    genBox.textContent=html;
+    genPre.textContent=html;
     preview.srcdoc=html;
-  }catch(err){genBox.textContent='Error: '+err;}
+  } catch(err){genPre.textContent='Error: '+err.message;}
 });
 
-tryBtn.addEventListener('click',()=>{
-  output.classList.add('hidden');
-  document.querySelector('.form-panel').style.maxHeight='none';
+// Try again from output
+tryAgain.addEventListener('click',()=>{
+  outputSection.classList.add('hidden');
+  inputSection.classList.remove('hidden');
+});
+
+// Allow clicking Try Again in input to reset
+tryInput.addEventListener('click',()=>{
+  form.reset();
 });
