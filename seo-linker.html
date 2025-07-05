@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SEO Internal Linker</title>
+</head>
+<body>
+  <form name="seo-linker" method="POST" data-netlify="true" action="/thanks.html">
+    <input type="hidden" name="form-name" value="seo-linker" />
+
+    <label>Client Domain:
+      <input type="url" name="client_domain" required />
+    </label><br/>
+
+    <label>Industry:
+      <input type="text" name="industry" required />
+    </label><br/>
+
+    <label>Primary Keyword:
+      <input type="text" name="primary_kw" required />
+    </label><br/>
+
+    <label>Secondary Keywords:
+      <input type="text" name="secondary_kws" required />
+    </label><br/>
+
+    <label>Article (HTML or plain text):
+      <textarea name="article" rows="10" required></textarea>
+    </label><br/>
+
+    <button type="submit">Generate SEO Links</button>
+  </form>
+</body>
+</html>
+

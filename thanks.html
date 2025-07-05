@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8" /><title>Result</title></head>
+<body>
+  <div id="result">Loading…</div>
+  <button onclick="history.back()">Try Again</button>
+  <script>
+    fetch(window.location.pathname, { method: "GET" })
+      .then(r => r.text())
+      .then(html => document.getElementById("result").innerHTML = html)
+      .catch(() => document.getElementById("result").textContent = "Error getting output.");
+  </script>
+</body>
+</html>
+
