@@ -7,43 +7,40 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <!-- Left Panel: Form -->
-    <div class="panel form-panel">
-      <img src="https://raw.githubusercontent.com/bala-gowtham/seo-internal-linker/main/repute-logo-white-01.png" alt="Repute Digital Logo" class="logo" />
+  <header class="header">
+    <img src="https://raw.githubusercontent.com/bala-gowtham/seo-internal-linker/main/repute-logo-white-01.png" alt="Repute Logo" class="logo" />
+  </header>
+
+  <main class="container">
+    <!-- Form Panel -->
+    <section class="panel form-panel">
       <form id="seo-form">
-        <input type="hidden" name="form-name" value="seo-linker" />
-
-        <label>Client Domain
-          <input type="url" name="client_domain" required />
-        </label>
-
-        <label>Industry
-          <input type="text" name="industry" required />
-        </label>
-
-        <label>Primary Keyword
-          <input type="text" name="primary_kw" required />
-        </label>
-
-        <label>Secondary Keywords
-          <input type="text" name="secondary_kws" placeholder="comma, separated" required />
-        </label>
-
-        <label>Article (HTML or plain text)
-          <textarea name="article" rows="6" required></textarea>
-        </label>
-
-        <button type="submit" class="btn-submit">Generate SEO Links</button>
+        <label>Client Domain<input type="url" name="client_domain" required /></label>
+        <label>Industry<input type="text" name="industry" required /></label>
+        <label>Primary Keyword<input type="text" name="primary_kw" required /></label>
+        <label>Secondary Keywords<input type="text" name="secondary_kws" placeholder="comma,separated" required /></label>
+        <label>Article<textarea name="article" rows="5" required></textarea></label>
+        <button type="submit" class="btn">Generate SEO Links</button>
       </form>
-    </div>
+    </section>
 
-    <!-- Right Panel: Result / Review -->
-    <div class="panel result-panel" id="result-panel">
-      <div id="result-content">Your generated HTML will appear here for review.</div>
-      <button id="try-again" class="btn-try">Try Again</button>
-    </div>
-  </div>
+    <!-- Output Section -->
+    <section id="output" class="panel output-panel hidden">
+      <div class="split">
+        <!-- Generated HTML Box -->
+        <div class="output-box">
+          <h2>Generated HTML</h2>
+          <pre id="generated"></pre>
+        </div>
+        <!-- Executed Code Box -->
+        <div class="output-box rendered">
+          <h2>Rendered Preview</h2>
+          <iframe id="preview" sandbox=""></iframe>
+        </div>
+      </div>
+      <button id="try-again" class="btn try">Try Again</button>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
