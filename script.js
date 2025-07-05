@@ -1,38 +1,54 @@
-const form=document.getElementById('seo-form');
-const inputSection=document.querySelector('.input-section');
-const outputSection=document.getElementById('output');
-const genPre=document.getElementById('generated');
-const preview=document.getElementById('preview');
-const tryInput=document.getElementById('try-again-input');
-const tryAgain=document.getElementById('try-again');
+const form = document.getElementById('seo-form');
+const inputSect = document.getElementById('input-section');
+const outputSect = document.getElementById('output-section');
+const genPre = document.getElementById('generated');
+const preview = document.getElementById('preview');
+const btnBack = document.getElementById('btn-back');
+const btnRetry = document.getElementById('btn-retry');
 
-// Show input, hide output initially
-inputSection.classList.remove('hidden');
-outputSection.classList.add('hidden');
+function showElement(el) {
+  el.classList.remove('hidden');
+}
+function hideElement(el) {
+  el.classList.add('hidden');
+}
 
-// Form submit → fetch & display
-form.addEventListener('submit',async e=>{
+// Initial state
+showElement(inputSect);
+hideElement(outputSect);
+
+// Generate / Submit
+form.addEventListener('submit', async e => {
   e.preventDefault();
-  const data=Object.fromEntries(new FormData(form));
-  genPre.textContent='Generating...';
-  preview.srcdoc='';
-  outputSection.classList.remove('hidden');
-  inputSection.classList.add('hidden');
+  const data = Object.fromEntries(new FormData(form));
+
+  // Show output, hide input
+  hideElement(inputSect);
+  showElement(outputSect);
+  genPre.textContent = 'Generating...';
+  preview.srcdoc = '';
+
   try {
-    const res=await fetch('YOUR_N8N_WEBHOOK_URL',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-    const html=await res.text();
-    genPre.textContent=html;
-    preview.srcdoc=html;
-  } catch(err){genPre.textContent='Error: '+err.message;}
+    const res = await fetch('YOUR_N8N_WEBHOOK_URL', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const html = await res.text();
+    genPre.textContent = html;
+    preview.srcdoc = html;
+  } catch (err) {
+    genPre.textContent = 'Error: ' + err.message;
+  }
 });
 
-// Try again from output
-tryAgain.addEventListener('click',()=>{
-  outputSection.classList.add('hidden');
-  inputSection.classList.remove('hidden');
+// Try Again (back to form)
+btnBack.addEventListener('click', () => {
+  showElement(inputSect);
+  hideElement(outputSect);
 });
 
-// Allow clicking Try Again in input to reset
-tryInput.addEventListener('click',()=>{
+// Try Again (clear) on input panel
+btnRetry.addEventListener('click', () => {
   form.reset();
 });
