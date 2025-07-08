@@ -20,7 +20,14 @@
       </div>
       <div class="right-panel">
         <form id="seo-form">
-          <label>Client Domain<input type="url" name="client_domain" required /></label>
+          <label>Client Domain
+              <select name="client_domain" required>
+              <option value="">-- Select Domain --</option>
+              <option value="https://kce.ac.in/">https://kce.ac.in/</option>
+              <option value="https://kahedu.edu.in/">https://kahedu.edu.in/</option>
+              <option value="https://kiic.in/">https://kiic.in/</option>
+            </select>
+          </label>
           <label>Industry<input type="text" name="industry" required /></label>
           <label>Primary Keyword<input type="text" name="primary_kw" required /></label>
           <label>Secondary Keywords<input type="text" name="secondary_kws" placeholder="comma, separated" required /></label>
