@@ -73,3 +73,10 @@ body { font-family: var(--font-body); color: var(--dark); }
   .left-panel h1 { font-size: 1.8rem; }
   .button-row { flex-direction: column; }
 }
+#seo-form select {
+  font-family: var(--font-body);
+  padding: .75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
