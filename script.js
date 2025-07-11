@@ -1,3 +1,4 @@
+console.log('🔌 script.js loaded');
 const form      = document.getElementById('seo-form');
 const inputSect = document.getElementById('input-section');
 const outputSect= document.getElementById('output-section');
