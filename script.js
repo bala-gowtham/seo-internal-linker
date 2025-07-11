@@ -7,7 +7,7 @@ const preview   = document.getElementById('preview');
 const btnBack   = document.getElementById('btn-back');
 const btnRetry  = document.getElementById('btn-retry');
 
-+ const WEBHOOK   = '/.netlify/functions/process-article';
+const WEBHOOK   = '/.netlify/functions/process-article';
 
 function show(el){ el.classList.remove('hidden'); }
 function hide(el){ el.classList.add('hidden'); }
