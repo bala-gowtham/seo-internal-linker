@@ -1,6 +1,4 @@
 // netlify/functions/process-article.js
-const fetch = (...args) => import('node-fetch').then(m => m.default(...args));
-
 exports.handler = async (event) => {
   const N8N_ENDPOINT = process.env.N8N_ENDPOINT;
   if (!N8N_ENDPOINT) {
